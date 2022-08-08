@@ -1,0 +1,41 @@
+[System]
+Name='Untitled'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='food'
+Range=[0 1]
+NumMFs=3
+MF1='rancid':'gaussmf',[0.177 0]
+MF2='average':'gaussmf',[0.1769 0.5]
+MF3='delicious':'gaussmf',[0.1769 1]
+
+[Input2]
+Name='service'
+Range=[0 1]
+NumMFs=3
+MF1='bad':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='medium':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='amazing':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Output1]
+Name='tip'
+Range=[0 1]
+NumMFs=3
+MF1='low':'gaussmf',[0.1769 -1.388e-17]
+MF2='medium':'gaussmf',[0.1769 0.5]
+MF3='high':'gaussmf',[0.1769 1]
+
+[Rules]
+1 1, 1 (1) : 2
+2 2, 2 (1) : 2
+3 3, 3 (1) : 2
